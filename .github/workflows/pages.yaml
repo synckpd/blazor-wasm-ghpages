@@ -32,6 +32,11 @@ jobs:
       - name: Publish
         run: dotnet publish -c Release -o release
 
+      - name: Set base-href for GitHub Pages
+        run: |
+          sed -i 's|<base href="/" />|<base href="/blazor-wasm-ghpages/" />|g' release/wwwroot/index.html
+
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
