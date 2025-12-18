@@ -36,6 +36,10 @@ jobs:
         run: |
           sed -i 's|<base href="/" />|<base href="/blazor-wasm-ghpages/" />|g' release/wwwroot/index.html
 
+      - name: Stamp version with commit sha
+        run: |
+          SHORT_SHA="${GITHUB_SHA::7}"
+          sed -i "s|\"Version\": \"local\"|\"Version\": \"${SHORT_SHA}\"|g" release/wwwroot/appsettings.json
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
