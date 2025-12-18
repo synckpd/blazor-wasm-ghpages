@@ -1,7 +1,10 @@
 ﻿@page "/"
+@inject IConfiguration Configuration
 
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
+
+<p>App Name: @Configuration["AppInfo:Name"]</p>
 
 Welcome to your new app.
